@@ -2,12 +2,24 @@
     const callHref = 'tel:+918096562345';
     const whatsappHref = 'https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?';
 
-    // Office locations shown when the red location button is clicked
+    // Office locations. `embed` is shown inside the site (works on laptop + mobile),
+    // `url` is the "Open in Google Maps" button (opens the app on mobile).
     const locations = [
-        { name: 'Hyderabad', url: 'https://share.google/QcoJh7stgOiKzgDYP' },
-        { name: 'Vizag (Visakhapatnam)', url: 'https://maps.app.goo.gl/gieJBo4sW1S1uY9j7' }
+        {
+            key: 'hyderabad',
+            name: 'Hyderabad',
+            address: '408, 4th Floor, Jain Friend Square Mall, Suchitra Circle, Hyderabad 500067',
+            url: 'https://www.google.com/maps/search/?api=1&query=Jain+Friend+Square+Mall+Suchitra+Circle+Hyderabad',
+            embed: 'https://www.google.com/maps?q=Jain+Friend+Square+Mall+Suchitra+Circle+Hyderabad&output=embed'
+        },
+        {
+            key: 'vizag',
+            name: 'Vizag (Visakhapatnam)',
+            address: 'Flat 202, KDP Pvt Ltd, Plot 91, Road Number 3A, Daspalla Hills, Visakhapatnam 530002',
+            url: 'https://maps.app.goo.gl/bZa8c3xZWJexDsXN6',
+            embed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4117.324677373457!2d83.31217407550967!3d17.715997383228327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943fe87cdbd6f%3A0xa8b1f1eb9ca00190!2sBHOOMerang%20Media%20-%20Digital%20Marketing%20and%20Advertising%20Agency!5e1!3m2!1sen!2sin!4v1793128393855!5m2!1sen!2sin'
+        }
     ];
-    const locationHref = locations[0].url; // fallback only
 
     function injectStyles() {
         if (document.getElementById('loc-chooser-styles')) return;
@@ -21,26 +33,44 @@
                 position: relative; width: 100%; max-width: 380px; text-align: center;
                 background: #0e0a06; border: 1px solid rgba(255,138,0,0.3); border-radius: 20px;
                 padding: 30px 26px 26px; box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-                font-family: 'Poppins', sans-serif;
+                font-family: 'Poppins', sans-serif; max-height: 92vh; overflow-y: auto;
             }
+            .loc-chooser-panel.is-map { max-width: 760px; }
             .loc-chooser-panel h3 { color: #fff; font-size: 1.3rem; font-weight: 600; margin: 0 0 6px; }
             .loc-chooser-panel p { color: rgba(224,224,224,0.75); font-size: 0.9rem; margin: 0 0 20px; }
-            .loc-chooser-panel a.loc-option {
-                display: flex; align-items: center; justify-content: center; gap: 10px;
+            .loc-chooser-panel .loc-option {
+                display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
                 padding: 13px 16px; margin-bottom: 12px; border-radius: 50px; text-decoration: none;
                 background: rgba(255,138,0,0.1); border: 1px solid rgba(255,138,0,0.35);
-                color: #fff; font-weight: 500; transition: background 0.25s ease, color 0.25s ease;
+                color: #fff; font-weight: 500; font-family: inherit; font-size: 1rem; cursor: pointer;
+                transition: background 0.25s ease, color 0.25s ease;
             }
-            .loc-chooser-panel a.loc-option:last-child { margin-bottom: 0; }
-            .loc-chooser-panel a.loc-option i { color: #ff8a00; transition: color 0.25s ease; }
-            .loc-chooser-panel a.loc-option:hover { background: #ff8a00; color: #000; }
-            .loc-chooser-panel a.loc-option:hover i { color: #000; }
+            .loc-chooser-panel .loc-option:last-child { margin-bottom: 0; }
+            .loc-chooser-panel .loc-option i { color: #ff8a00; transition: color 0.25s ease; }
+            .loc-chooser-panel .loc-option:hover { background: #ff8a00; color: #000; }
+            .loc-chooser-panel .loc-option:hover i { color: #000; }
             .loc-chooser-close {
                 position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%;
                 background: rgba(255,138,0,0.1); border: 1px solid rgba(255,138,0,0.3);
-                color: #ff8a00; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+                color: #ff8a00; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; z-index: 2;
             }
             .loc-chooser-close:hover { background: #ff8a00; color: #000; }
+
+            .loc-view-list, .loc-view-map { display: none; }
+            .loc-chooser-panel:not(.is-map) .loc-view-list { display: block; }
+            .loc-chooser-panel.is-map .loc-view-map { display: block; }
+
+            .loc-map-frame {
+                width: 100%; height: 420px; border: 0; border-radius: 14px;
+                background: #1a1209; margin-bottom: 16px;
+            }
+            .loc-map-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+            .loc-map-actions .loc-option { width: auto; margin: 0; padding: 11px 22px; font-size: 0.92rem; }
+            .loc-map-address { margin: 0 0 14px !important; }
+            @media (max-width: 600px) {
+                .loc-map-frame { height: 300px; }
+                .loc-chooser-panel { padding: 26px 16px 20px; }
+            }
         `;
         document.head.appendChild(style);
     }
@@ -56,21 +86,71 @@
             '<div class="loc-chooser-backdrop"></div>' +
             '<div class="loc-chooser-panel">' +
                 '<button type="button" class="loc-chooser-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>' +
-                '<h3>Choose Your Location</h3>' +
-                '<p>Select an office to open it in Google Maps.</p>' +
-                locations.map(function (l) {
-                    return '<a class="loc-option" href="' + l.url + '" target="_blank" rel="noopener">' +
-                           '<i class="fa-solid fa-location-dot" aria-hidden="true"></i> ' + l.name + '</a>';
-                }).join('') +
+
+                // View 1: list of offices
+                '<div class="loc-view-list">' +
+                    '<h3>Choose Your Location</h3>' +
+                    '<p>Select an office to view it on the map.</p>' +
+                    locations.map(function (l) {
+                        return '<button type="button" class="loc-option" data-key="' + l.key + '">' +
+                               '<i class="fa-solid fa-location-dot" aria-hidden="true"></i> ' + l.name + '</button>';
+                    }).join('') +
+                '</div>' +
+
+                // View 2: embedded map
+                '<div class="loc-view-map">' +
+                    '<h3 class="loc-map-title"></h3>' +
+                    '<p class="loc-map-address"></p>' +
+                    '<iframe class="loc-map-frame" title="Office location map" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>' +
+                    '<div class="loc-map-actions">' +
+                        '<button type="button" class="loc-option loc-back"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All Offices</button>' +
+                        '<a class="loc-option loc-open-maps" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i> Open in Google Maps</a>' +
+                    '</div>' +
+                '</div>' +
             '</div>';
         document.body.appendChild(chooser);
 
-        const open = function () { chooser.classList.add('open'); chooser.setAttribute('aria-hidden', 'false'); };
-        const close = function () { chooser.classList.remove('open'); chooser.setAttribute('aria-hidden', 'true'); };
+        const panel   = chooser.querySelector('.loc-chooser-panel');
+        const frame   = chooser.querySelector('.loc-map-frame');
+        const title   = chooser.querySelector('.loc-map-title');
+        const addr    = chooser.querySelector('.loc-map-address');
+        const openBtn = chooser.querySelector('.loc-open-maps');
+
+        function showList() {
+            panel.classList.remove('is-map');
+            frame.src = 'about:blank';
+        }
+
+        function showMap(key) {
+            const loc = locations.find(function (l) { return l.key === key; });
+            if (!loc) return;
+            title.textContent = loc.name + ' Office';
+            addr.textContent = loc.address;
+            frame.src = loc.embed;
+            openBtn.href = loc.url;
+            panel.classList.add('is-map');
+        }
+
+        function open(key) {
+            if (key) showMap(key); else showList();
+            chooser.classList.add('open');
+            chooser.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('logo-modal-open'); // blocks slide-wheel navigation on home page
+        }
+
+        function close() {
+            chooser.classList.remove('open');
+            chooser.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('logo-modal-open');
+            frame.src = 'about:blank';
+        }
 
         chooser.querySelector('.loc-chooser-backdrop').addEventListener('click', close);
         chooser.querySelector('.loc-chooser-close').addEventListener('click', close);
-        chooser.querySelectorAll('.loc-option').forEach(function (a) { a.addEventListener('click', close); });
+        chooser.querySelector('.loc-back').addEventListener('click', showList);
+        chooser.querySelectorAll('.loc-view-list .loc-option').forEach(function (b) {
+            b.addEventListener('click', function () { showMap(b.getAttribute('data-key')); });
+        });
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && chooser.classList.contains('open')) close();
         });
@@ -84,8 +164,21 @@
         injectStyles();
         const chooser = buildChooser();
 
+        // Expose so other parts of the site can open a map directly
+        window.BhoomerangMap = { open: chooser.open, close: chooser.close };
+
+        // Any link with data-map-key="vizag" / "hyderabad" opens the in-page map.
+        // Ctrl/Cmd/Shift/middle-click still opens the normal href in a new tab.
+        document.addEventListener('click', function (e) {
+            const link = e.target.closest('[data-map-key]');
+            if (!link) return;
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+            e.preventDefault();
+            chooser.open(link.getAttribute('data-map-key'));
+        });
+
         const mapLink = document.createElement('a');
-        mapLink.href = locationHref;
+        mapLink.href = locations[0].url; // fallback only
         mapLink.className = 'location-float';
         mapLink.target = '_blank';
         mapLink.rel = 'noopener';
