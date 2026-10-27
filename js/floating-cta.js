@@ -2,21 +2,26 @@
     const callHref = 'tel:+918096562345';
     const whatsappHref = 'https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?';
 
-    // Office locations. `embed` is shown inside the site (works on laptop + mobile),
-    // `url` is the "Open in Google Maps" button (opens the app on mobile).
+    // Office locations.
+    // embed     -> map shown inside the site (works on laptop + mobile)
+    // url       -> full Google Maps URL for the "Open in Google Maps" button
+    //              (full URLs work everywhere; short links like maps.app.goo.gl can error on desktop)
+    // shortUrl  -> your short share link, kept for reference / fallback only
     const locations = [
         {
             key: 'hyderabad',
-            name: 'Hyderabad',
-            address: '408, 4th Floor, Jain Friend Square Mall, Suchitra Circle, Hyderabad 500067',
-            url: 'https://www.google.com/maps/search/?api=1&query=Jain+Friend+Square+Mall+Suchitra+Circle+Hyderabad',
-            embed: 'https://www.google.com/maps?q=Jain+Friend+Square+Mall+Suchitra+Circle+Hyderabad&output=embed'
+            name: 'Hyderabad (ESI)',
+            address: 'Pillar No 987, Bhanu Enclave, Flat No 312, 3rd Floor, beside ESI Hospital Metro Station, Erragadda, Hyderabad 500038',
+            url: 'https://www.google.com/maps/search/?api=1&query=BHOOMerang+Media+Digital+Marketing+Agency+Erragadda+Hyderabad',
+            shortUrl: 'https://share.google/SWxeFyVSp04drmFPW',
+            embed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4123.403841495322!2d78.4328835824239!3d17.449232440771752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb910db67dd679%3A0x461f4496542952b!2sBHOOMerang%20Media%20-%20Digital%20Marketing%20Agency!5e1!3m2!1sen!2sin!4v1793128915890!5m2!1sen!2sin'
         },
         {
             key: 'vizag',
             name: 'Vizag (Visakhapatnam)',
-            address: 'Flat 202, KDP Pvt Ltd, Plot 91, Road Number 3A, Daspalla Hills, Visakhapatnam 530002',
-            url: 'https://maps.app.goo.gl/bZa8c3xZWJexDsXN6',
+            address: 'Flat 202, KDP Pvt Ltd, Plot 91, Road Number 3A, Daspalla Hills, Pandurangapuram, Visakhapatnam 530002',
+            url: 'https://www.google.com/maps/search/?api=1&query=BHOOMerang+Media+Digital+Marketing+and+Advertising+Agency+Visakhapatnam',
+            shortUrl: 'https://maps.app.goo.gl/bZa8c3xZWJexDsXN6',
             embed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4117.324677373457!2d83.31217407550967!3d17.715997383228327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943fe87cdbd6f%3A0xa8b1f1eb9ca00190!2sBHOOMerang%20Media%20-%20Digital%20Marketing%20and%20Advertising%20Agency!5e1!3m2!1sen!2sin!4v1793128393855!5m2!1sen!2sin'
         }
     ];
@@ -104,7 +109,7 @@
                     '<iframe class="loc-map-frame" title="Office location map" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>' +
                     '<div class="loc-map-actions">' +
                         '<button type="button" class="loc-option loc-back"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All Offices</button>' +
-                        '<a class="loc-option loc-open-maps" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i> Open in Google Maps</a>' +
+                        '<a class="loc-option loc-open-maps" href="#" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i> Open in Google Maps</a>' +
                     '</div>' +
                 '</div>' +
             '</div>';
@@ -164,7 +169,8 @@
         injectStyles();
         const chooser = buildChooser();
 
-        // Expose so other parts of the site can open a map directly
+        // Expose so other parts of the site can open a map directly:
+        // BhoomerangMap.open('vizag') or BhoomerangMap.open('hyderabad')
         window.BhoomerangMap = { open: chooser.open, close: chooser.close };
 
         // Any link with data-map-key="vizag" / "hyderabad" opens the in-page map.
@@ -181,7 +187,7 @@
         mapLink.href = locations[0].url; // fallback only
         mapLink.className = 'location-float';
         mapLink.target = '_blank';
-        mapLink.rel = 'noopener';
+        mapLink.rel = 'noopener noreferrer';
         mapLink.setAttribute('aria-label', 'Choose Bhoomerang Media office location (Hyderabad or Vizag)');
         mapLink.setAttribute('aria-haspopup', 'dialog');
         mapLink.title = 'View Location';
@@ -202,7 +208,7 @@
         waLink.href = whatsappHref;
         waLink.className = 'whatsapp-float';
         waLink.target = '_blank';
-        waLink.rel = 'noopener';
+        waLink.rel = 'noopener noreferrer';
         waLink.setAttribute('aria-label', 'Chat with Bhoomerang Media on WhatsApp');
         waLink.title = 'Chat on WhatsApp';
         waLink.innerHTML = '<i class="fa-brands fa-whatsapp" aria-hidden="true"></i>';
