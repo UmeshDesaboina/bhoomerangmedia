@@ -5,7 +5,7 @@
     // Office locations shown when the red location button is clicked
     const locations = [
         { name: 'Hyderabad', url: 'https://share.google/QcoJh7stgOiKzgDYP' },
-        { name: 'Vizag (Visakhapatnam)', url: 'https://maps.app.goo.gl/gieJBo4sW1S1uY9j7' }
+        { name: 'Vizag (Visakhapatnam)', url: 'https://share.google/tXTYoz4TNz2pPEM3i' }
     ];
     const locationHref = locations[0].url; // fallback only
 
