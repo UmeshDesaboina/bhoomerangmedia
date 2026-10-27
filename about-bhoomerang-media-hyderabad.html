@@ -13,8 +13,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <title>About Bhoomerang Media — Digital Marketing Company in ESI, Hyderabad</title>
-    <meta name="description" content="Bhoomerang Media — top digital marketing company in Hyderabad, based in ESI Erragadda. In-house team of strategists, creatives & data analysts. Serving businesses across Telangana." />
+    <title>About Bhoomerang Media — Digital Marketing Company in Hyderabad &amp; Vizag</title>
+    <meta name="description" content="Bhoomerang Media — top digital marketing company serving Hyderabad and Visakhapatnam (Vizag), based in ESI Erragadda. In-house team of strategists, creatives &amp; data analysts. Serving businesses across Telangana and Andhra Pradesh." />
     <meta name="author" content="Bhoomerang Media" />
     <link rel="canonical" href="https://bhoomerangmedia.com/about-bhoomerang-media-hyderabad.html" />
     <!-- Google Fonts -->
@@ -31,6 +31,142 @@
     <!-- Shared styles -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
+    <style>
+        /* Clickable contact items (email, phone, map links) */
+        a.contact-item,
+        a.contact-item:visited {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        a.contact-item:hover span,
+        a.contact-item:focus-visible span {
+            color: var(--orange-accent);
+            text-decoration: underline;
+        }
+    </style>
+
+    <style>
+        /* ===== Responsive overrides (loaded after styles.css / pages.css) ===== */
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+        body.page { overflow-x: hidden; }
+        body.page img, body.page iframe { max-width: 100%; }
+        body.page .container { box-sizing: border-box; width: 100%; margin-left: auto; margin-right: auto; }
+
+        /* Fluid typography on every screen size */
+        body.page h1.section-title { font-size: clamp(1.9rem, 5vw + 0.5rem, 3.6rem); line-height: 1.15; }
+        body.page h2.section-title { font-size: clamp(1.6rem, 3.5vw + 0.5rem, 2.8rem); line-height: 1.2; }
+        body.page .section-subtitle { font-size: clamp(1rem, 1.5vw + 0.6rem, 1.4rem); }
+        body.page .body-text { font-size: clamp(0.95rem, 0.4vw + 0.85rem, 1.1rem); line-height: 1.7; }
+
+        /* Contact items: comfortable tap targets, long text never overflows */
+        .contact-item { min-height: 44px; }
+        .contact-item span { overflow-wrap: anywhere; word-break: break-word; }
+
+        /* Cards: images scale inside their frames */
+        .tool-card .card-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* ---------- Laptops / small desktops ---------- */
+        @media (max-width: 1100px) {
+            body.page .container { padding-left: 32px; padding-right: 32px; }
+            body.page .services-grid { gap: 24px; }
+        }
+
+        /* ---------- Tablets (landscape + portrait) ---------- */
+        @media (max-width: 1024px) {
+            body.page .services-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 24px;
+            }
+            body.page .services-grid > :last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                max-width: 560px;
+                width: 100%;
+                justify-self: center;
+            }
+        }
+
+        /* ---------- Tablets portrait: stack split layouts ---------- */
+        @media (max-width: 900px) {
+            body.page .split-layout,
+            body.page .split-layout.reverse {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+                align-items: stretch;
+            }
+            body.page .split-layout .image-column,
+            body.page .split-layout .text-column {
+                width: 100%;
+                max-width: 100%;
+                flex: 1 1 auto;
+            }
+            body.page .split-layout .image-column .image-slot {
+                max-width: 560px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            body.page .split-layout .text-column { text-align: left; }
+        }
+
+        /* ---------- Phones ---------- */
+        @media (max-width: 640px) {
+            body.page .container { padding-left: 16px; padding-right: 16px; }
+            body.page section { padding-top: 56px; padding-bottom: 56px; }
+            body.page #hero { padding-top: 96px; }
+
+            body.page .services-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 20px;
+            }
+            body.page .services-grid > :last-child:nth-child(odd) { max-width: 100%; }
+
+            body.page .contact-details {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 14px;
+                width: 100%;
+            }
+            body.page .contact-item {
+                width: 100%;
+                justify-content: flex-start;
+                text-align: left;
+            }
+
+            body.page .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
+                max-width: 360px;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            body.page .page-footer { padding-left: 16px; padding-right: 16px; text-align: center; }
+            body.page .page-footer a { display: inline-block; padding: 6px 4px; }
+        }
+
+        /* ---------- Very small phones ---------- */
+        @media (max-width: 380px) {
+            body.page .container { padding-left: 12px; padding-right: 12px; }
+            body.page .eyebrow { font-size: 0.75rem; letter-spacing: 0.08em; }
+        }
+
+        /* ---------- Large / ultra-wide screens ---------- */
+        @media (min-width: 1600px) {
+            body.page .container { max-width: 1400px; }
+        }
+
+        /* ---------- Accessibility: respect reduced motion ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .anim { transition: none !important; animation: none !important; opacity: 1 !important; transform: none !important; }
+        }
+    </style>
 </head>
 <body class="page" data-base="" data-page="about">
     <!-- Google Tag Manager (noscript) -->
@@ -54,13 +190,14 @@
             <div class="container center-layout">
                 <span class="eyebrow anim anim-up">About Bhoomerang Media</span>
                 <h1 class="section-title anim anim-up">
-                    Your Digital Growth Partner from <span class="script-text">Hyderabad</span>
+                    Your Digital Growth Partner from <span class="script-text">Hyderabad &amp; Vizag</span>
                 </h1>
                 <h3 class="section-subtitle anim anim-up" style="transition-delay: 150ms;">Full-service. In-house. Performance-obsessed.</h3>
                 <p class="body-text anim anim-up" style="transition-delay: 300ms;">
-                    <span class="highlight">Bhoomerang Media</span> is a full-service digital marketing company based
-                    right beside ESI Hospital Metro Station, Erragadda, Hyderabad. We combine creative excellence
-                    with analytical precision to help businesses across Telangana thrive online.
+                    <span class="highlight">Bhoomerang Media</span> is a full-service digital marketing company with its
+                    studio right beside ESI Hospital Metro Station, Erragadda, Hyderabad, serving businesses in
+                    Hyderabad and Visakhapatnam (Vizag). We combine creative excellence
+                    with analytical precision to help businesses across Telangana and Andhra Pradesh thrive online.
                 </p>
 
                 <!-- <div class="image-slot ratio-16-9 hero-image-slot anim anim-up" style="transition-delay: 450ms;">
@@ -130,7 +267,7 @@
                             <i class="fa-solid fa-bullseye" style="margin-right: 8px;"></i>Our Mission
                         </h4>
                         <p class="body-text" style="margin-bottom: 0;">
-                            Empower businesses in Hyderabad and beyond with data-driven strategies that generate
+                            Empower businesses in Hyderabad, Vizag and beyond with data-driven strategies that generate
                             real, measurable growth — leads, sales, and long-term brand equity.
                         </p>
                     </div>
@@ -140,7 +277,7 @@
                             <i class="fa-solid fa-eye" style="margin-right: 8px;"></i>Our Vision
                         </h4>
                         <p class="body-text" style="margin-bottom: 0;">
-                            To be recognised as the most results-oriented digital marketing company in Hyderabad —
+                            To be recognised as the most results-oriented digital marketing company in Hyderabad and Vizag —
                             known for transparency, creativity, and unwavering commitment to client success.
                         </p>
                     </div>
@@ -158,7 +295,7 @@
             <div class="container">
                 <div class="section-intro">
                     <span class="eyebrow anim anim-up">Why Us</span>
-                    <h2 class="section-title anim anim-up">Different from other agencies in <span class="highlight">Hyderabad</span></h2>
+                    <h2 class="section-title anim anim-up">Different from other agencies in <span class="highlight">Hyderabad &amp; Vizag</span></h2>
                     <p class="body-text anim anim-up" style="transition-delay: 150ms;">Three reasons local brands choose Bhoomerang.</p>
                 </div>
 
@@ -183,11 +320,11 @@
 
                     <div class="tool-card anim anim-up" style="transition-delay: 500ms;">
                         <div class="card-image">
-                            <img src="images/about/about-diff-local.png" alt="ESI Erragadda Hyderabad" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="images/about/about-diff-local.png" alt="Hyderabad and Vizag local market expertise" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="placeholder-icon" style="display: none;"><i class="fa-solid fa-location-dot"></i></div>
                         </div>
-                        <h4>We Know Hyderabad</h4>
-                        <p>Based beside ESI Hospital Metro. We understand the local market, competition, and consumer — an edge other agencies on the far side of the city cannot replicate.</p>
+                        <h4>We Know Hyderabad &amp; Vizag</h4>
+                        <p>Based beside ESI Hospital Metro in Hyderabad and actively serving Visakhapatnam. We understand the local markets, competition, and consumers in both cities — an edge other agencies cannot replicate.</p>
                     </div>
                 </div>
             </div>
@@ -234,7 +371,7 @@
                             <div class="placeholder-icon" style="display: none;"><i class="fa-solid fa-building"></i></div>
                         </div>
                         <h4>Full On-Site Team</h4>
-                        <p>We deploy a dedicated team directly at your Hyderabad office for deep collaboration and seamless integration with your wider business operations.</p>
+                        <p>We deploy a dedicated team directly at your office in Hyderabad or Vizag for deep collaboration and seamless integration with your wider business operations.</p>
                         <span class="card-link">Start a conversation <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
                 </div>
@@ -271,23 +408,44 @@
             <div class="container center-layout">
                 <h2 class="section-title anim anim-up">Let's build something <span class="highlight">great</span> together.</h2>
                 <p class="body-text anim anim-up" style="transition-delay: 150ms;">
-                    Businesses across ESI, Erragadda, and Hyderabad trust Bhoomerang Media to be their
+                    Businesses across Hyderabad, Vizag, and the Telugu states trust Bhoomerang Media to be their
                     digital growth engine. We'd love to be yours too.
                 </p>
 
                 <div class="contact-details">
-                    <div class="contact-item anim anim-left" style="transition-delay: 300ms;">
+                    <!-- Hyderabad → Google Maps -->
+                    <a class="contact-item anim anim-left" style="transition-delay: 300ms;"
+                       href="https://www.google.com/maps/search/?api=1&amp;query=Bhoomerang+Media+Bhanu+Enclave+ESI+Hospital+Metro+Station+Erragadda+Hyderabad+500038"
+                       target="_blank" rel="noopener noreferrer"
+                       aria-label="Open Bhoomerang Media Hyderabad location in Google Maps">
                         <i class="fa-solid fa-location-dot"></i>
-                        <span>Pillar No 987, Bhanu Enclave, Flat No 312, 3rd Floor, beside ESI Hospital Metro Station, Erragadda, Hyderabad, Telangana 500038</span>
-                    </div>
-                    <div class="contact-item anim anim-left" style="transition-delay: 400ms;">
+                        <span>Hyderabad Office — View on Google Maps</span>
+                    </a>
+
+                    <!-- Vizag → Google Maps -->
+                    <a class="contact-item anim anim-left" style="transition-delay: 380ms;"
+                       href="https://www.google.com/maps/search/?api=1&amp;query=Bhoomerang+Media+Visakhapatnam"
+                       target="_blank" rel="noopener noreferrer"
+                       aria-label="Open Bhoomerang Media Vizag location in Google Maps">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Vizag Office — View on Google Maps</span>
+                    </a>
+
+                    <!-- Email → opens mail app -->
+                    <a class="contact-item anim anim-left" style="transition-delay: 460ms;"
+                       href="mailto:hello@bhoomerangmedia.com"
+                       aria-label="Send an email to hello@bhoomerangmedia.com">
                         <i class="fa-solid fa-envelope"></i>
                         <span>hello@bhoomerangmedia.com</span>
-                    </div>
-                    <div class="contact-item anim anim-left" style="transition-delay: 500ms;">
+                    </a>
+
+                    <!-- Phone → tap to call -->
+                    <a class="contact-item anim anim-left" style="transition-delay: 540ms;"
+                       href="tel:+918096562345"
+                       aria-label="Call Bhoomerang Media on +91 8096 56 2345">
                         <i class="fa-solid fa-phone"></i>
                         <span>+91 8096 56 2345</span>
-                    </div>
+                    </a>
                 </div>
 
                 <br><br>
@@ -296,7 +454,7 @@
         </section>
 
         <footer class="page-footer">
-            <p>© 2026 Bhoomerang Media · Digital Marketing Company in ESI, Hyderabad</p>
+            <p>© 2026 Bhoomerang Media · Digital Marketing Company in Hyderabad &amp; Vizag</p>
             <p style="margin-top: 8px;">
                 <a href="/">Home</a> ·
                 <a href="about-bhoomerang-media-hyderabad.html">About</a> ·
