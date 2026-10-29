@@ -13,8 +13,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <title>Contact Bhoomerang Media | Digital Marketing Agency in ESI, Hyderabad</title>
-    <meta name="description" content="Contact Bhoomerang Media — the digital marketing agency in ESI, Hyderabad. Located beside ESI Hospital Metro Station, Erragadda. Call, email or send a message to start your growth journey." />
+    <title>Contact Bhoomerang Media | Digital Marketing, ESI Hyderabad</title>
+    <meta name="description" content="Contact Bhoomerang Media, beside ESI Hospital Metro Station, Erragadda. Call, email or send a message to start your growth journey." />
     <meta name="author" content="Bhoomerang Media" />
     <link rel="canonical" href="https://bhoomerangmedia.com/contact-bhoomerang-media-hyderabad.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,6 +52,20 @@
         }
         .info-tile .icon-chip i { color: var(--orange-accent); font-size: 0.62rem; }
     </style>
+    <!-- Social sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Bhoomerang Media" />
+    <meta property="og:title" content="Contact Bhoomerang Media | Digital Marketing, ESI Hyderabad" />
+    <meta property="og:description" content="Contact Bhoomerang Media, beside ESI Hospital Metro Station, Erragadda. Call, email or send a message to start your growth journey." />
+    <meta property="og:url" content="https://bhoomerangmedia.com/contact-bhoomerang-media-hyderabad.html" />
+    <meta property="og:image" content="https://bhoomerangmedia.com/images/og-default.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Bhoomerang Media: digital marketing agency in Hyderabad" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact Bhoomerang Media | Digital Marketing, ESI Hyderabad" />
+    <meta name="twitter:description" content="Contact Bhoomerang Media, beside ESI Hospital Metro Station, Erragadda. Call, email or send a message to start your growth journey." />
+    <meta name="twitter:image" content="https://bhoomerangmedia.com/images/og-default.jpg" />
 </head>
 <body class="page" data-base="" data-page="contact">
     <!-- Google Tag Manager (noscript) -->
@@ -183,9 +197,12 @@
                             <textarea id="message" name="message" required rows="5" placeholder="Briefly describe your business and what you'd like to achieve with digital marketing..."></textarea>
                         </div>
 
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
+                        
                         <div class="submit-row">
                             <button type="submit" class="btn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
                         </div>
+                        <p class="form-consent">By sending this form you agree to our <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
                     </form>
                 </div>
             </div>
@@ -374,6 +391,7 @@
                 <a href="services/digital-marketing-services-hyderabad.html">Services</a> ·
                 <a href="contact-bhoomerang-media-hyderabad.html">Contact</a>
             </p>
+            <p style="margin-top: 8px;"><a href="/privacy-policy.html">Privacy Policy</a></p>
         </footer>
 
     </main>
@@ -384,13 +402,8 @@
             entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in-view'); animObserver.unobserve(entry.target); } });
         }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
         document.querySelectorAll('.anim, .anim-reveal').forEach(el => animObserver.observe(el));
-
-        // Read-only form submit (no backend wired yet): show a friendly notice.
-        document.querySelector('.contact-form')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert("Thanks — we'll get back to you within 24 hours. (Note: form endpoint not yet connected.)");
-        });
     </script>
+    <script src="js/forms.js"></script>
     <script src="js/floating-cta.js"></script>
     <script src="js/audit-modal.js"></script>
 </body>

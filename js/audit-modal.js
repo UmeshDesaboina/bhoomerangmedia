@@ -1,3 +1,10 @@
+(function () {  /* load shared lead-form handler (js/forms.js) next to this script */
+  var cs = document.currentScript;
+  if (cs && cs.src && !window.__bmFormsLoading) {
+    window.__bmFormsLoading = true;
+    var f = document.createElement('script'); f.src = cs.src.replace(/[^\/]*$/, 'forms.js'); f.defer = true; document.head.appendChild(f);
+  }
+})();
 /* =====================================================================
    Free Audit modal — shared across every page.
    - On pages that already ship their own #audit-modal (e.g. index.html),
@@ -79,7 +86,9 @@ body.audit-modal-open{overflow:hidden;}\
       <label for="audit-message">Tell Us About Your Business &amp; Goals *</label>\
       <textarea id="audit-message" name="message" required rows="4" placeholder="Briefly describe your business and what you\'d like to achieve..."></textarea>\
     </div>\
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">\
     <div class="submit-row"><button type="submit" class="btn">Send Message <i class="fa-solid fa-paper-plane"></i></button></div>\
+    <p class="form-consent">By sending this form you agree to our <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>\
   </form>\
 </div>';
 
@@ -138,15 +147,10 @@ body.audit-modal-open{overflow:hidden;}\
                 openModal(modal);
             });
         });
-        // Form submit (endpoint not yet connected)
+        // Lead submission is handled by forms.js; close the modal shortly after success.
         var form = modal.querySelector('#audit-form');
         if (form) {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                alert("Thanks — we'll get back to you within 24 hours. (Note: form endpoint not yet connected.)");
-                form.reset();
-                closeModal(modal);
-            });
+            form.addEventListener('bm:lead-success', function () { setTimeout(function () { closeModal(modal); }, 2600); });
         }
     }
 

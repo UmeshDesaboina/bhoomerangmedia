@@ -27,6 +27,8 @@ The agency focuses on delivering tailored digital marketing solutions designed t
 
 - [About Bhoomerang Media Hyderabad | Bhoomerang Media](https://bhoomerangmedia.com/about-bhoomerang-media-hyderabad.html): Learn about the agency's mission, vision, and team.
 - [Contact Bhoomerang Media Hyderabad | Bhoomerang Media](https://bhoomerangmedia.com/contact-bhoomerang-media-hyderabad.html): Get in touch with Bhoomerang Media for inquiries and consultations.
+- [Our Team | Bhoomerang Media](https://bhoomerangmedia.com/team.html): The designers, social media managers, SEO specialists and developers behind Bhoomerang Media.
+- [Privacy Policy | Bhoomerang Media](https://bhoomerangmedia.com/privacy-policy.html): How we collect, use and protect personal data.
 
 ## Portfolio
 
@@ -45,18 +47,7 @@ The agency focuses on delivering tailored digital marketing solutions designed t
 - [Google AI Overviews Optimization in Hyderabad](https://bhoomerangmedia.com/blog/google-ai-overviews-optimization-hyderabad.html): Optimize your content to appear in Google's AI Overviews.
 - [Geo vs. SEO: Difference & Business Need](https://bhoomerangmedia.com/blog/geo-vs-seo-difference-business-need.html): Clarify the distinction between Geo-optimization and SEO for business needs.
 - [What is AEO (Answer Engine Optimization)?](https://bhoomerangmedia.com/blog/what-is-aeo-answer-engine-optimization-hyderabad.html): Understand the concept and benefits of Answer Engine Optimization (AEO).
-
-## Redirects & Uncategorized
-
-- [Phone Number](https://bhoomerangmedia.com/tel:+918096562345): Direct link to initiate a phone call to the agency.
-- [Performance Marketing Hyderabad | Bhoomerang Media](https://bhoomerangmedia.com/performance-marketing-hyderabad.html): Drive results with targeted performance marketing campaigns, including Google Ads.
-- [Video Production Hyderabad | Bhoomerang Media](https://bhoomerangmedia.com/video-production-hyderabad.html): Create engaging video content to elevate your brand's storytelling and reach.
-- [Branding & Design Services Hyderabad | Bhoomerang Media](https://bhoomerangmedia.com/branding-design-hyderabad.html): Get professional branding and design solutions to create a strong visual identity.
-- [Digital Marketing Services Hyderabad | Bhoomerang Media](https://bhoomerangmedia.com/digital-marketing-services-hyderabad.html): Explore a full spectrum of digital marketing services designed to boost your online presence.
-- [Social Media Management Hyderabad | Bhoomerang Media](https://bhoomerangmedia.com/social-media-management-hyderabad.html): Learn how to enhance your brand's social media presence with expert management services.
-- [Web Development Hyderabad | Bhoomerang Media](https://bhoomerangmedia.com/web-development-hyderabad.html): Build professional and responsive websites tailored to your business needs.
-- [SEO & AEO Services Hyderabad | Bhoomerang Media](https://bhoomerangmedia.com/seo-aeo-geo-hyderabad.html): Boost search rankings with expert SEO, AEO, and Geo-optimization strategies.
-- [Digital Marketing Strategy](https://bhoomerangmedia.com/strategy.html): Learn about developing effective digital marketing strategies.
+- [Is Your Hyderabad Business Ready for Generative Search?](https://bhoomerangmedia.com/blog/hyderabad-business-generative-search.html): How Hyderabad businesses can prepare for AI-powered generative search using SEO, GEO and AEO.
 
 ---
 

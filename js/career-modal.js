@@ -1,3 +1,10 @@
+(function () {  /* load shared lead-form handler (js/forms.js) next to this script */
+  var cs = document.currentScript;
+  if (cs && cs.src && !window.__bmFormsLoading) {
+    window.__bmFormsLoading = true;
+    var f = document.createElement('script'); f.src = cs.src.replace(/[^\/]*$/, 'forms.js'); f.defer = true; document.head.appendChild(f);
+  }
+})();
 /* =====================================================================
    Careers / "Apply Now" modal — opened from any [data-open-career] or
    #open-career-modal CTA on the page. Self-contained: injects its own
@@ -84,7 +91,9 @@ body.career-modal-open{overflow:hidden;}\
       <label for="career-message">Why do you want to join us? *</label>\
       <textarea id="career-message" name="message" required rows="4" placeholder="A few lines about yourself and what you\'d bring to the team..."></textarea>\
     </div>\
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">\
     <div class="submit-row"><button type="submit" class="btn">Submit Application <i class="fa-solid fa-paper-plane"></i></button></div>\
+    <p class="form-consent">By sending this form you agree to our <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>\
   </form>\
 </div>';
 
@@ -143,15 +152,10 @@ body.career-modal-open{overflow:hidden;}\
                 openModal(modal);
             });
         });
-        // Form submit (endpoint not yet connected)
+        // Lead submission is handled by forms.js; close the modal shortly after success.
         var form = modal.querySelector('#career-form');
         if (form) {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                alert("Thanks for applying — we'll review your application and get back to you soon. (Note: form endpoint not yet connected.)");
-                form.reset();
-                closeModal(modal);
-            });
+            form.addEventListener('bm:lead-success', function () { setTimeout(function () { closeModal(modal); }, 4000); });
         }
     }
 
